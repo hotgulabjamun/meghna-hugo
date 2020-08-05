@@ -18,7 +18,11 @@ First we will fork this [meghna hugo](https://github.com/themefisher/meghna-hugo
 
 ### Step 2 : Add your repository in Forestry
 
-Go to your [forestry](https://bit.ly/forestry-account)  account and click on `import your site now`. declare your config.toml file [`exampleSite/`] and fill up basic settings . Mark everything is done then go to configuration to change the base url . You can put any url but this have to similar as netlify . So for now put a name which you are going to put in netlify as netlify subdomain.
+Go to your [forestry](https://bit.ly/forestry-account)  account and click on `import your site now`. declare your config.toml file [`exampleSite`] and fill up basic settings .
+
+**Or just click this button for one click installation** [![import to forestry](https://assets.forestry.io/import-to-forestryK.svg)](https://app.forestry.io/quick-start?repo=themefisher/meghna-hugo&engine=hugo&version=0.60.1&config=exampleSite)
+
+Now mark everything as done, then go to configuration to change the base url . You can put any url but this have to similar as netlify . So for now put a name which you are going to put in netlify as netlify subdomain.
 
 ### Step 3 : Setup and host website with Netlify
 
@@ -31,7 +35,7 @@ Here comes the last step . Go to your [netlify](https://bit.ly/netlify-account) 
 - [Demo](#demo)
 - [Installation (Old Way)](#installation)
 - [Reporting Issues](#reporting-issues)
-- [Technical Support or Questions](#technical-support-or-questions)
+- [Technical Support or Questions](#technical-support-or-questions-(paid))
 - [Licensing](#licensing)
 - [More Hugo Themes](https://themefisher.com/hugo-themes/)
 
@@ -52,14 +56,14 @@ $ cd meghna-hugo/exampleSite/
 $ hugo server --themesDir ../..
 ```
 
-[Full Documentation](http://demo.themefisher.com/meghna-hugo/en/blog/installation/).
+[Full Documentation](https://documentation.themefisher.com/docs/meghna-hugo/hugo-installation/).
 
 ## Reporting Issues
 
 We use GitHub Issues as the official bug tracker for the Meghna Template. Please Search [existing issues](https://github.com/themefisher/meghna-hugo/issues). It’s possible someone has already reported the same problem.
 If your problem or idea is not addressed yet, [open a new issue](https://github.com/themefisher/meghna-hugo/issues)
 
-## Technical Support or Questions
+## Technical Support or Questions (Paid)
 
 If you have questions or need help integrating the product please [contact us](mailto:themefisher@gmail.com) instead of opening an issue.  
 

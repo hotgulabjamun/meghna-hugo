@@ -1,13 +1,20 @@
+/* ========================================================================= */
+/*	Page Preloader
+/* ========================================================================= */
+
+$(window).on('load', function () {
+	$('.preloader').fadeOut(100);
+});
+
 jQuery(function ($) {
 	"use strict";
 
 	/* ========================================================================= */
-	/*	Page Preloader
+	/*	lazy load initialize
 	/* ========================================================================= */
 
-	$(window).on('load', function () {
-		$('.preloader').fadeOut(100);
-	});
+	const observer = lozad(); // lazy loads elements with default selector as ".lozad"
+	observer.observe();
 
 	/* ========================================================================= */
 	/*	Magnific popup
@@ -27,6 +34,7 @@ jQuery(function ($) {
 		fixedContentPos: false,
 		fixedBgPos: true
 	});
+
 	/* ========================================================================= */
 	/*	Portfolio Filtering Hook
 	/* =========================================================================  */
@@ -46,6 +54,7 @@ jQuery(function ($) {
 			}
 		});
 	}
+
 	/* ========================================================================= */
 	/*	Testimonial Carousel
 	/* =========================================================================  */
@@ -58,24 +67,6 @@ jQuery(function ($) {
 	});
 
 	/* ========================================================================= */
-	/*	Animated section
-	/* ========================================================================= */
-
-	var wow = new WOW({
-		offset: 100, // distance to the element when triggering the animation (default is 0)
-		mobile: false // trigger animations on mobile devices (default is true)
-	});
-
-	var scrolled = false;
-	$(window).on('scroll', function () {
-		if (!scrolled) {
-			scrolled = true;
-			wow.init();
-		}
-	})
-
-
-	/* ========================================================================= */
 	/*	animation scroll js
 	/* ========================================================================= */
 
@@ -86,7 +77,7 @@ jQuery(function ($) {
 			target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
 			if (target.length) {
 				html_body.animate({
-					scrollTop: target.offset().top - 70
+					scrollTop: target.offset().top - 50
 				}, 1500, 'easeInOutExpo');
 				return false;
 			}
@@ -142,124 +133,4 @@ jQuery(function ($) {
 		counter();
 	});
 
-	/* ========================================================================= */
-	/*	Google Map Customization
-	/* =========================================================================  */
-
-	function initialize() {
-
-		var latitude = $('#map-canvas').attr('data-latitude');
-		var longitude = $('#map-canvas').attr('data-longitude');
-		var myLatLng = new google.maps.LatLng(latitude, longitude);
-
-		var roadAtlasStyles = [{
-			"featureType": "landscape",
-			"elementType": "geometry.fill",
-			"stylers": [{
-				"color": "#2F3238"
-			}]
-		}, {
-			"elementType": "labels.text.fill",
-			"stylers": [{
-				"color": "#FFFFFF"
-			}]
-		}, {
-			"elementType": "labels.text.stroke",
-			"stylers": [{
-				"visibility": "off"
-			}]
-		}, {
-			"featureType": "road",
-			"elementType": "geometry.fill",
-			"stylers": [{
-				"color": "#50525f"
-			}]
-		}, {
-			"featureType": "road",
-			"elementType": "geometry.stroke",
-			"stylers": [{
-				"visibility": "on"
-			}, {
-				"color": "#808080"
-			}]
-		}, {
-			"featureType": "poi",
-			"elementType": "labels",
-			"stylers": [{
-				"visibility": "off"
-			}]
-		}, {
-			"featureType": "transit",
-			"elementType": "labels.icon",
-			"stylers": [{
-				"visibility": "off"
-			}]
-		}, {
-			"featureType": "poi",
-			"elementType": "geometry",
-			"stylers": [{
-				"color": "#808080"
-			}]
-		}, {
-			"featureType": "water",
-			"elementType": "geometry.fill",
-			"stylers": [{
-				"color": "#3071a7"
-			}, {
-				"saturation": -65
-			}]
-		}, {
-			"featureType": "road",
-			"elementType": "labels.icon",
-			"stylers": [{
-				"visibility": "off"
-			}]
-		}, {
-			"featureType": "landscape",
-			"elementType": "geometry.stroke",
-			"stylers": [{
-				"color": "#bbbbbb"
-			}]
-		}];
-
-		var mapOptions = {
-			zoom: 14,
-			center: myLatLng,
-			disableDefaultUI: true,
-			scrollwheel: false,
-			navigationControl: false,
-			mapTypeControl: false,
-			scaleControl: false,
-			draggable: false,
-			mapTypeControlOptions: {
-				mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'roadatlas']
-			}
-		};
-
-		var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-
-		var marker = new google.maps.Marker({
-			position: myLatLng,
-			map: map,
-			title: '',
-		});
-
-
-		google.maps.event.addListener(marker, 'click', function () {
-			infowindow.open(map, marker);
-		});
-
-		var styledMapOptions = {
-			name: 'US Road Atlas'
-		};
-
-		var usRoadMapType = new google.maps.StyledMapType(
-			roadAtlasStyles, styledMapOptions);
-
-		map.mapTypes.set('roadatlas', usRoadMapType);
-		map.setMapTypeId('roadatlas');
-	}
-
-	google.maps.event.addDomListener(window, "load", initialize)
 });
